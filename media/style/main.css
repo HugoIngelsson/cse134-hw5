@@ -1,0 +1,26 @@
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: chartreuse;
+
+    position: sticky;
+    top: 0;
+    /* width: 100%; */
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    background-color: aqua;
+}
+
+nav ul li a.active {
+    background-color: aliceblue;
+}
