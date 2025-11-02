@@ -11,4 +11,6 @@
     --body-background: rgb(131, 230, 130);
     --main-background: rgb(31, 130, 30);
     --item-background: rgb(101, 200, 100);
+
+    --animation-range: cover 20% cover 25%, cover 85% cover 90;
 }

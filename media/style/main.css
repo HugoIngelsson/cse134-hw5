@@ -98,6 +98,7 @@ nav {
         from {
             opacity: 0;
             transform: translateX(-100%);
+            visibility: hidden;
         }
         to {
             opacity: 1;
@@ -108,11 +109,12 @@ nav {
     @keyframes slide-out-left {
         from {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translateX(-50%);
         }
         to {
             opacity: 0;
-            transform: translateX(50%);
+            transform: translateX(-100%);
+            visibility: hidden;
         }
     }
 
@@ -120,6 +122,7 @@ nav {
         from {
             opacity: 0;
             transform: translateX(0%);
+            visibility: hidden;
         }
         to {
             opacity: 1;
@@ -134,35 +137,89 @@ nav {
         }
         to {
             opacity: 0;
-            transform: translateX(-100%);
+            transform: translateX(0%);
+            visibility: hidden;
         }
     }
-  
-    sliding-container.from-right {
-        opacity: 0;
-        transform: translateX(50%);
-        animation: slide-in-right 1s ease-in forwards, slide-out-right 1s ease-out forwards;
-        animation-timeline: view(), view();
-        animation-range: cover 20% cover 25%, cover 85% cover 90%;
+
+    @keyframes slide-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(100%) translateX(-50%);
+            visibility: hidden;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0%) translateX(-50%);
+        }
     }
 
-    sliding-container.from-left {
+    @keyframes slide-out-up {
+        from {
+            opacity: 1;
+            transform: translateY(0%) translateX(-50%);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-100%) translateX(-50%);
+            visibility: hidden; 
+        }
+    }
+
+    sliding-container {
         opacity: 0;
+    }
+  
+    sliding-container.in-right {
+        transform: translateX(0%);
+    }
+
+    sliding-container.in-left {
         transform: translateX(-100%);
+    }
+
+    sliding-container.in-up {
+        transform: translateY(100%) translateX(-50%);
+    }
+
+    sliding-container.in-right.out-right {
+        animation: slide-in-right 1s ease-in forwards, slide-out-right 1s ease-out forwards;
+        animation-timeline: view(), view();
+        animation-range: cover 10% cover 15%, cover 85% cover 90%;
+    }
+
+    sliding-container.in-left.out-right {
+        animation: slide-in-left 1s ease-in forwards, slide-out-right 1s ease-out forwards;
+        animation-timeline: view(), view();
+        animation-range: cover 10% cover 15%, cover 90% cover 100%;
+    }
+
+    sliding-container.in-right.out-left {
+        animation: slide-in-right 1s ease-in forwards, slide-out-left 1s ease-out forwards;
+        animation-timeline: view(), view();
+        animation-range: cover 10% cover 15%, cover 85% cover 90%;
+    }
+
+    sliding-container.in-left.out-left {
         animation: slide-in-left 1s ease-in forwards, slide-out-left 1s ease-out forwards;
         animation-timeline: view(), view();
-        animation-range: cover 15% cover 25%, cover 80% cover 90%;
+        animation-range: cover 10% cover 15%, cover 85% cover 90%;
+    }
+
+    sliding-container.in-up.out-up {
+        animation: slide-in-up 1s ease-in forwards, slide-out-up 1s ease-out forwards;
+        animation-timeline: view(), view();
+        animation-range: cover 10% cover 25%, cover 85% cover 100%;
     }
 }
 
 body {
     background-color: var(--body-background);
+    overflow-x: hidden;
 }
 
 main {
-    width: min(80%, 1000px);
     margin: 0 auto;
-    padding: 1rem 2rem;
     background-color: var(--main-background);
 
     display: flex;
@@ -173,9 +230,8 @@ main {
 
 sliding-container {
     display: flex;
-    /* display: block; */
     background-color: var(--item-background);
-    width: 120%;
+    justify-content: center;
     
     position: relative;
     left: 50%;
@@ -189,23 +245,91 @@ sliding-container.no-image {
     flex-direction: column;
 }
 
+sliding-container pre {
+    text-align: initial;
+}
+
+sliding-container p {
+    margin: 0 20px;
+}
+
 labeled-image {
-    display: block;
+    display: flex;
     margin: 2px 10px;
     border-color: #ddd;
     border-width: 5px;
     border-style: outset;
 
+    picture {
+        display: flex;
+    }
+
+    source {
+        height: 0;
+    }
+
     img {
         width: 300px;
-        height: 100%;
+        height: auto;
     }
 }
 
-labeled-image.tilt-left {
-    transform: rotateZ(-4deg);
+@media (width >= 700px) {
+    main {
+        width: min(80%, 900px);
+        padding: 1rem 2rem;
+    }
+
+    sliding-container {
+        width: 120%;
+    }
+
+    labeled-image.tilt-left {
+        transform: rotateZ(-4deg);
+    }
+    
+    labeled-image.tilt-right {
+        transform: rotateZ(4deg);
+    }
 }
 
-labeled-image.tilt-right {
-    transform: rotateZ(4deg);
+@media (width < 700px) {
+    main {
+        width: 100%;
+    }
+
+    iframe {
+        display: none;
+    }
+
+    sliding-container {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    labeled-image {
+        width: fit-content;
+
+        picture {
+            margin: 0 auto;
+            width: fit-content;
+        }
+    }
+
+    #comp-prog-pic {
+        order: 2;
+    }
+}
+
+iframe {
+    width: 90%;
+    margin: 10px auto;
+}
+
+sliding-container hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

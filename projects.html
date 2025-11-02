@@ -16,19 +16,26 @@
                     <li><a href="./contact.html">Contact Me</a></li>
                     <li><a href="./experiments.html">Experimental!?</a></li>
                     <li id="list-nav"><a>Settings</a></li>
-                    <li id="top-nav" style="float: right;"><a><img src="./media/img/svg/settings.svg" class="svg-white" onclick="alert('not implemented yet, waiting for JS')"></a></li>
+                    <li id="top-nav" style="float: right;"><a>
+                        <img src="./media/img/svg/settings.svg" class="svg-white" onclick="alert('not implemented yet, waiting for JS')"
+                            alt="An icon of a cog wheel, indicating a settings menu">
+                    </a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            <h1>Projects Page!</h1>
-            <p>I've made a couple of things that I'm proud of, so here is where I'll share them.</p>
+            <sliding-container class="no-image in-left out-right">
+                <h1>Projects Page!</h1>
+                <p>I've made a couple of things that I'm proud of, so here is where I'll share them.</p>
+            </sliding-container>
 
             <section id="coding-projects">
+                <sliding-container class="no-image in-right out-left">
                 <h2>Coding Projects</h2>
                 <p>These are particularly projects that I've coded up.</p>
+                </sliding-container>
                 <article>
-                    <sliding-container class="no-image from-left">
+                    <sliding-container class="no-image in-left out-right">
                         <h3>Gameboy Emulator</h3>
                         <p>
                             I made a <a href="">Gameboy Emulator</a> towards the end of last summer. 
@@ -36,7 +43,7 @@
                             project to show off.
                         </p>
                     </sliding-container>
-                    <sliding-container class="from-right">
+                    <sliding-container class="in-right out-left">
                         <labeled-image class="tilt-left">
                             <picture>
                                 <source type="image/avif" srcset="./media/img/avif/gameboy_start.avif" width="500">
@@ -53,7 +60,7 @@
                             working machine, until it was finally done.
                         </p>
                     </sliding-container>
-                    <sliding-container class="from-left">
+                    <sliding-container class="in-left out-right">
                         <p>
                             The feeling of seeing the startup screen work for the first time is 
                             like no other. It really is a special kind of magic to have worked 
@@ -71,147 +78,171 @@
                 </article>
     
                 <article>
-                    <h3>Catan in the Terminal</h3>
-                    <p>
-                        I made a game of Catan that runs in the terminal, which you can find 
-                        <a href="https://github.com/HugoIngelsson/Catan">here</a>. I put a lot of 
-                        effort into making it look good in the terminal using ANSI codes, which is 
-                        harder said than done. I had to create my own rendering system and artwork 
-                        (especially hard since the pixels aren't 1x1 but rather in a weird aspect 
-                        ratio), and this is of course on top of all of the game logic and player 
-                        inputs I had to program.
-                    </p>
-                    <p>
-                        I think the coolest thing about this project to me is that it's all just 
-                        in native Java, so pretty much any system that supports ANSI escape codes 
-                        can run the app. Maybe I missed an opportunity to learn some other framework 
-                        when making this instead, but I think it was a good chance to get into the 
-                        meats of how to build something ground up.
-                    </p>
-                    <labeled-image>
-                        <picture>
-                            <source type="image/avif" srcset="./media/img/avif/catan.avif" width="500">
-                            <img src="./media/img/png/catan.png" alt="Catan" width="500">
-                        </picture><br>
-                        The home screen for my game of Catan
-                    </labeled-image>
+                    <sliding-container class="no-image in-left out-left">
+                        <h3>Catan in the Terminal</h3>
+                        <p>
+                            I made a game of Catan that runs in the terminal, which you can find 
+                            <a href="https://github.com/HugoIngelsson/Catan">here</a>. I put a lot of 
+                            effort into making it look good in the terminal using ANSI codes, which is 
+                            harder said than done. I had to create my own rendering system and artwork 
+                            (especially hard since the pixels aren't 1x1 but rather in a weird aspect 
+                            ratio), and this is of course on top of all of the game logic and player 
+                            inputs I had to program.
+                        </p>
+                    </sliding-container>
+                    <sliding-container class="in-right out-right">
+                        <labeled-image class="tilt-left">
+                            <picture>
+                                <source type="image/avif" srcset="./media/img/avif/catan.avif" width="500">
+                                <img src="./media/img/png/catan.png" alt="Catan" width="500">
+                            </picture><br>
+                            <!-- The home screen for my game of Catan -->
+                        </labeled-image>
+                        <p>
+                            I think the coolest thing about this project to me is that it's all just 
+                            in native Java, so pretty much any system that supports ANSI escape codes 
+                            can run the app. Maybe I missed an opportunity to learn some other framework 
+                            when making this instead, but I think it was a good chance to get into the 
+                            meats of how to build something ground up.
+                        </p>
+                    </sliding-container>
                 </article>
 
                 <article>
-                    <h3>Concard</h3>
-                    <p>
-                        This one's a bit different because it was a group project for CSE
-                        110 (Software Engineering). We ended up building <b>Concard</b>, a
-                        website where people can design their own business cards (somewhat
-                        similar to Figma).
-                    </p>
-                    <p>
-                        I think the project (and the class overall) was an insightful experience,
-                        giving me a chance to work in a team in a way I've never had to before.
-                        I also think our final project is pretty cool&mdash;we decided to create
-                        something with a lot of depth, and I think we managed to execute well on it.
-                    </p>
-                    <p>
-                        You can try out the app <a href="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html">here</a>,
-                        or you can use it directly below in this interactive <code>&lt;iframe&gt;</code>:
-                    </p>
-                    <!-- <iframe id="concard-iframe" title="Inline Concard" width="1000" height="780"
-                        src="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/editor-page.html">
-                    </iframe> -->
+                    <sliding-container class="no-image in-right out-left">
+                        <h3>Concard</h3>
+                        <p>
+                            This one's a bit different because it was a group project for CSE
+                            110 (Software Engineering). We ended up building <b>Concard</b>, a
+                            website where people can design their own business cards (somewhat
+                            similar to Figma).
+                        </p>
+                    </sliding-container>
+                    <sliding-container class="no-image in-right out-right">
+                        <p>
+                            I think the project (and the class overall) was an insightful experience,
+                            giving me a chance to work in a team in a way I've never had to before.
+                            I also think our final project is pretty cool&mdash;we decided to create
+                            something with a lot of depth, and I think we managed to execute well on it.
+                        </p>
+                    </sliding-container>
+                    <sliding-container class="no-image in-up out-up">
+                        <p>
+                            You can try out the app <a href="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html">here</a>,
+                            or you can use it directly below in this interactive <code>&lt;iframe&gt;</code>:
+                        </p>
+                        <iframe id="concard-iframe" title="Inline Concard" width="1000" height="780"
+                            src="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/editor-page.html">
+                        </iframe>
+                    </sliding-container>
                 </article>
             </section>
             <section id="competitions">
-                <h2>Competitions</h2>
-                <p>I also try to join different kinds of coding competitions when I can.</p>
+                <sliding-container class="no-image in-right out-left">
+                    <h2>Competitions</h2>
+                    <p>I also try to join different kinds of coding competitions when I can.</p>
+                </sliding-container>
                 <article>
-                    <h3>Chess AI</h3>
-                    <p>
-                        One cool thing I made was as part of
-                        <a href="https://www.youtube.com/watch?v=Ne40a5LkK6A">Sebastian Lague's Chess Bot Challenge</a>, 
-                        where, as the name suggests, I built a chess bot that then competed against 
-                        other people's bots in a tournament. Ultimately, I placed 111th out of 624 
-                        competitors, which I think is decent enough since the competition was open to anyone
-                        who wanted to participate.
-                    </p>
-                    <p>
-                        It did have a twist, however, which was that bots were restricted to the number of 
-                        "tokens" they could contain, so you couldn't just up and copy Stockfish as your 
-                        submission. This led to a bunch of bad code; this is one of my favorite snippets 
-                        from what I submitted:
-                    </p>
-                    <pre><code>
-    ulong[,] packedTables = {
-        {0x0358305008132370,0x02339AA00477FDB0}, // pawns middlegame
-        {0x08BAA8727ADCCB92,0x8CFEECA7AEFFECB7}, // knights middlegame
-        {0x1667886096ADACA8,0x699CD8C759AEFB95}, // bishops middlegame
-        {0x493162304D958663,0x9EB88975CFDA8AB8}, // rooks middlegame
-        {0x2014722629CF8980,0x5C9DBEA02AA8A9D7}, // queen middlegame
-        {0x0112265D0011247F,0x0001146A00011248}, // king middlegame
-        {0x0C8532000A843120,0x096432500FA54530}, // pawns endgame
-        {0x035676401569B854,0x559CCA969CDFEEC9}, // knights endgame
-        {0x2558884038DBAB95,0x4BC9CB847CDFFEC9}, // bishops endgame
-        {0xE8943902686A6220,0xFF392551C4A39352}, // rooks endgame
-        {0x04678531379AB973,0x58ADDA846ACFFCB7}, // queen endgame
-        {0x1377874049DDCA83,0x59EFDDA66AEFDDA6}  // king endgame
-    };
-                    </code></pre>
-                    <p>
-                        A central strategy in building a chess bot is to evaluate each piece's value relative 
-                        to where on the board it is. Doing this naively, as with a simple 8x8 2D array for each 
-                        piece, takes up <strong>way</strong> too many tokens, however, so I needed to compress the info much further. 
-                        That's where the above comes from: it's more efficient to store each value as a byte 
-                        part of a long and then unpack the value every time you need it, at least from a 
-                        token perspective.
-                    </p>
+                    <sliding-container class="no-image in-left out-right">
+                        <h3>Chess AI</h3>
+                        <p>
+                            One cool thing I made was as part of
+                            <a href="https://www.youtube.com/watch?v=Ne40a5LkK6A">Sebastian Lague's Chess Bot Challenge</a>, 
+                            where, as the name suggests, I built a chess bot that then competed against 
+                            other people's bots in a tournament. Ultimately, I placed 111th out of 624 
+                            competitors, which I think is decent enough since the competition was open to anyone
+                            who wanted to participate.
+                        </p>
+                    </sliding-container>
+                    <sliding-container class="no-image in-right out-left">
+                        <p>
+                            It did have a twist, however, which was that bots were restricted to the number of 
+                            "tokens" they could contain, so you couldn't just up and copy Stockfish as your 
+                            submission. This led to a bunch of bad code; this is one of my favorite snippets 
+                            from what I submitted:
+                        </p>
+                        <pre><code>
+        ulong[,] packedTables = {
+            {0x0358305008132370,0x02339AA00477FDB0}, // pawns middlegame
+            {0x08BAA8727ADCCB92,0x8CFEECA7AEFFECB7}, // knights middlegame
+            {0x1667886096ADACA8,0x699CD8C759AEFB95}, // bishops middlegame
+            {0x493162304D958663,0x9EB88975CFDA8AB8}, // rooks middlegame
+            {0x2014722629CF8980,0x5C9DBEA02AA8A9D7}, // queen middlegame
+            {0x0112265D0011247F,0x0001146A00011248}, // king middlegame
+            {0x0C8532000A843120,0x096432500FA54530}, // pawns endgame
+            {0x035676401569B854,0x559CCA969CDFEEC9}, // knights endgame
+            {0x2558884038DBAB95,0x4BC9CB847CDFFEC9}, // bishops endgame
+            {0xE8943902686A6220,0xFF392551C4A39352}, // rooks endgame
+            {0x04678531379AB973,0x58ADDA846ACFFCB7}, // queen endgame
+            {0x1377874049DDCA83,0x59EFDDA66AEFDDA6}  // king endgame
+        };
+                        </code></pre>
+                        <p>
+                            A central strategy in building a chess bot is to evaluate each piece's value relative 
+                            to where on the board it is. Doing this naively, as with a simple 8x8 2D array for each 
+                            piece, takes up <strong>way</strong> too many tokens, however, so I needed to compress the info much further. 
+                            That's where the above comes from: it's more efficient to store each value as a byte 
+                            part of a long and then unpack the value every time you need it, at least from a 
+                            token perspective.
+                        </p>
+                    </sliding-container>
                 </article>
 
                 <article>
-                    <h3>Battlecode</h3>
-                    <p>
-                        This is a <a href="https://battlecode.org/">competition</a> where you build an AI to play in a 
-                        real-time strategy (RTS) game (much like Starcraft, if you've heard of it) hosted 
-                        by MIT. Each agent in the game has its own brain which you must program, and whoever 
-                        beats their opponent at achieving the objective wins the match. I've competed two years 
-                        in a row with two of my friends, and this year we made it into the top 16 
-                        (winning us a free trip to Boston and $500).
-                    </p>
-                    <p>
-                        There are a couple of reasons why the competition is so challenging (and fun!). First, 
-                        you only program the brains of individual robots, who are all part of a team, and there 
-                        isn't a direct way for them to influence each others' actions. They thus have to operate 
-                        on some kind of shared strategy. Furthermore, individual robots only have a limited sensing 
-                        distance, so the small amount of messaging that robots do get has to be used to organize over 
-                        the entire map. Finally, robots are restricted on how much bytecode (effectively computational 
-                        power) they're allowed each round, meaning you not only have to manage actual in-game 
-                        resources but also how efficiently the robots operate.
-                    </p>
-                    <labeled-image>
-                        <picture>
-                            <source type="image/avif" srcset="./media/img/avif/battlecode.avif" width="500">
-                            <img src="./media/img/jpg/battlecode.jpg" alt="Battlecode" width="500">
-                        </picture><br>
-                        Me and my teammates in Boston after the final tournament
-                    </labeled-image>
+                    <sliding-container class="no-image in-right out-right">
+                        <h3>Battlecode</h3>
+                        <p>
+                            This is a <a href="https://battlecode.org/">competition</a> where you build an AI to play in a 
+                            real-time strategy (RTS) game (much like Starcraft, if you've heard of it) hosted 
+                            by MIT. Each agent in the game has its own brain which you must program, and whoever 
+                            beats their opponent at achieving the objective wins the match. I've competed two years 
+                            in a row with two of my friends, and this year we made it into the top 16 
+                            (winning us a free trip to Boston and $500).
+                        </p>
+                    </sliding-container>
+                    <sliding-container class="in-left out-left">
+                        <p>
+                            There are a couple of reasons why the competition is so challenging (and fun!). First, 
+                            you only program the brains of individual robots, who are all part of a team, and there 
+                            isn't a direct way for them to influence each others' actions. They thus have to operate 
+                            on some kind of shared strategy. Furthermore, individual robots only have a limited sensing 
+                            distance, so the small amount of messaging that robots do get has to be used to organize over 
+                            the entire map. Finally, robots are restricted on how much bytecode (effectively computational 
+                            power) they're allowed each round, meaning you not only have to manage actual in-game 
+                            resources but also how efficiently the robots operate.
+                        </p>
+                        <labeled-image class="tilt-right">
+                            <picture>
+                                <source type="image/avif" srcset="./media/img/avif/battlecode.avif" width="500">
+                                <img src="./media/img/jpg/battlecode.jpg" alt="Battlecode" width="500">
+                            </picture><br>
+                            <!-- Me and my teammates in Boston after the final tournament -->
+                        </labeled-image>
+                    </sliding-container>
                 </article>
 
                 <article>
-                    <h3>Competitive Programming</h3>
-                    <p>
-                        Since getting to college, I've also gotten into competitive programming. I joined 
-                        the ICPC club at UCSD and have competed at the SoCal regional two years in a row 
-                        now, placing 7th last year's fall.
-                    </p>
-                    <p>
-                        It's competition season once again, so hopefully I can top last year's performance!
-                        I'll be competing in the middle of November, wish me luck!
-                    </p>
-                    <labeled-image>
-                        <picture>
-                            <source type="image/avif" srcset="./media/img/avif/comp_prog.avif" width="500">
-                            <img src="/media/img/jpg/comp_prog.jpg" alt="Competitive Programming" width="500">
-                        </picture><br>
-                        Image from this last year's competition season. I was on team "UCSD Warrent Bear"
-                    </labeled-image>
+                    <sliding-container class="in-right out-left">
+                        <labeled-image class="tilt-left" id="comp-prog-pic">
+                            <picture>
+                                <source type="image/avif" srcset="./media/img/avif/comp_prog.avif" width="500">
+                                <img src="/media/img/jpg/comp_prog.jpg" alt="Competitive Programming" width="500">
+                            </picture><br>
+                            <!-- Image from this last year's competition season. I was on team "UCSD Warrent Bear" -->
+                        </labeled-image>
+                        <hgroup>
+                            <h3>Competitive Programming</h3>
+                            <p>
+                                Since getting to college, I've also gotten into competitive programming. I joined 
+                                the ICPC club at UCSD and have competed at the SoCal regional two years in a row 
+                                now, placing 7th last year's fall.
+                            </p> 
+                            <p>
+                                It's competition season once again, so hopefully I can top last year's performance!
+                                I'll be competing in the middle of November, wish me luck!
+                            </p>
+                        </hgroup>
+                    </sliding-container>
                 </article>
             </section>
         </main>
