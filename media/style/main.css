@@ -372,10 +372,13 @@ dialog {
     }
 
     img {
+        max-height: 80dvh;
+        max-width: 90dvw;
+
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, calc(-50% + var(--nav-height) / 2));
         z-index: 9;
         border-color: white;
         box-shadow: 0 0 10px 4px var(--palette-color3, #4fbc9c);
@@ -399,7 +402,7 @@ dialog {
     }
 }
 
-@media not (orientation: landscape) {
+/* @media not (orientation: landscape) {
     dialog img {
         max-height: 80dvh;
         max-width: 90dvw;
@@ -411,7 +414,7 @@ dialog {
         max-height: 90dvw;
         max-width: 80dvh;
     }
-}
+} */
 
 /* Match images with their respective dialog boxes */
 :root:has(labeled-image#gb-start-img:focus) dialog#gb-start-dialog {
