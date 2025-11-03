@@ -1,17 +1,15 @@
 @import url("vars.css");
 @import url("svg-colors.css");
+@import url("fonts.css");
 
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Ubuntu';
 }
 
 header {
     display: inline;
-}
-
-nav {
-    z-index: 1; /* ensure rendered on top */
 }
 
 @media (width >= 550px) and (not ((orientation: portrait) and (not (hover: hover)))) {
@@ -56,6 +54,7 @@ nav {
 }
 
 nav {
+    z-index: 1; /* ensure rendered on top */
     width: 100%;
     display: block;
     font-size: var(--nav-font-size);
@@ -247,18 +246,46 @@ sliding-container.no-image {
 
 sliding-container pre {
     text-align: initial;
+    font-family: monospace;
+}
+
+sliding-container h1 {
+    font-size: var(--font-size-h1);
+    margin: 2rem auto;
+}
+
+sliding-container h2 {
+    font-size: var(--font-size-h2);
+    margin: 2rem auto;
+}
+
+sliding-container h3 {
+    font-size: var(--font-size-h3);
+    margin: 1rem auto;
 }
 
 sliding-container p {
-    margin: 0 20px;
+    font-size: var(--font-size-p);
+    margin: 1rem 20px;
+    align-self: center;
+}
+
+sliding-container hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 labeled-image {
     display: flex;
+    width: 300px;
     margin: 2px 10px;
     border-color: #ddd;
     border-width: 5px;
     border-style: outset;
+
+    height: fit-content;
+    align-self: center;
 
     picture {
         display: flex;
@@ -271,6 +298,15 @@ labeled-image {
     img {
         width: 300px;
         height: auto;
+    }
+
+    figcaption {
+        position: absolute;
+        width: 300px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--fig-text-background);
     }
 }
 
@@ -310,16 +346,17 @@ labeled-image {
     }
 
     labeled-image {
-        width: fit-content;
+        margin: 0.5rem auto;
+        order: 2;
 
         picture {
             margin: 0 auto;
             width: fit-content;
         }
-    }
 
-    #comp-prog-pic {
-        order: 2;
+        figcaption {
+            bottom: calc(0.5rem + 5px);
+        }
     }
 }
 
@@ -328,8 +365,6 @@ iframe {
     margin: 10px auto;
 }
 
-sliding-container hgroup {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+a {
+    color: var(--link-color);
 }

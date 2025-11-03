@@ -12,5 +12,12 @@
     --main-background: rgb(31, 130, 30);
     --item-background: rgb(101, 200, 100);
 
-    --animation-range: cover 20% cover 25%, cover 85% cover 90;
+    --font-size-p: 1em;
+    --font-size-h1: 4em;
+    --font-size-h2: 2em;
+    --font-size-h3: 1.5em;
+
+    --link-color: #113;
+
+    --fig-text-background: white;
 }
