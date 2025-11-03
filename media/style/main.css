@@ -231,9 +231,10 @@ body {
 main {
     margin: 0 auto;
     background-color: var(--palette-color2);
+    min-height: calc(100dvh - var(--nav-height) - 16px);
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 }
@@ -277,8 +278,12 @@ sliding-container h3 {
 
 sliding-container p {
     font-size: var(--font-size-p);
-    margin: 1rem 20px;
+    margin: 1rem auto;
     align-self: center;
+}
+
+h1, h2, h3, p {
+    padding: 0 1rem;
 }
 
 sliding-container hgroup {
@@ -288,9 +293,30 @@ sliding-container hgroup {
     margin: auto 1rem;
 }
 
+sliding-container audio, sliding-container video, sliding-container canvas, sliding-container table {
+    margin: 0 auto;
+}
+
+sliding-container canvas {
+    background-color: white;
+    padding: 1rem 1rem;
+}
+
+sliding-container table {
+    border: 1px solid black;
+
+    td {
+        padding: 0 1rem;
+    }
+
+    td:not(:first-child) {
+        border-left: 1px solid black;
+    }
+}
+
 labeled-image {
     display: flex;
-    width: 300px;
+    width: fit-content;
     margin: 2px 10px;
     border-color: var(--palette-color3);
     border-width: 5px;
@@ -308,9 +334,12 @@ labeled-image {
     }
 
     img {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    img:not([data-width-overwrite]) {
         width: 300px;
         height: auto;
-        transition: transform 0.2s ease-in-out;
     }
 
     img:hover {
@@ -329,7 +358,7 @@ labeled-image {
 }
 
 img {
-    max-width: 100vw;
+    max-width: 100dvw;
     height: auto;
 }
 
@@ -351,8 +380,6 @@ dialog {
         border-color: white;
         box-shadow: 0 0 10px 4px var(--palette-color3);
 
-        max-height: 80vh;
-        max-width: 90vw;
         height: auto;
     }
 
@@ -361,11 +388,25 @@ dialog {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100dvw;
+        height: 100dvh;
         background-color: var(--palette-color1);
         opacity: 0.75;
         z-index: 6;
+    }
+}
+
+@media not (orientation: landscape) {
+    dialog img {
+        max-height: 80dvh;
+        max-width: 90dvw;
+    }
+}
+
+@media (orientation: landscape) {
+    dialog img {
+        max-height: 90dvw;
+        max-width: 80dvh;
     }
 }
 
@@ -387,6 +428,10 @@ dialog {
 }
 
 :root:has(labeled-image#comp-prog-img:focus) dialog#comp-prog-dialog {
+    display: block;
+}
+
+:root:has(labeled-image#me-img:focus) dialog#me-dialog {
     display: block;
 }
 
@@ -438,12 +483,11 @@ dialog {
     }
 
     pre {
-        width: 100vw;
+        width: 100dvw;
     }
 
     labeled-image {
         margin: 0.5rem auto;
-        order: 2;
 
         picture {
             margin: 0 auto;
@@ -453,6 +497,10 @@ dialog {
         figcaption {
             bottom: calc(0.5rem + 5px);
         }
+    }
+
+    sliding-container labeled-image {
+        order: 2;
     }
 
     .hide-on-thin {
@@ -476,4 +524,58 @@ a:hover {
 hr {
     border: none;
     height: 0.5rem;
+}
+
+form {
+    min-width: 50%;
+    margin: 2rem auto;
+    text-align: left;
+
+    form-field, fieldset {
+        display: block;
+        margin: 1rem auto;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 3rem;
+        height: 100%;
+    }
+
+    fieldset {
+        padding: 1rem 1rem;
+        border-color: var(--palette-color1);
+        border-style: solid;
+    }
+
+    form-field:has(button[type="submit"]) {
+        justify-self: center;
+
+        button {
+            background-color: var(--palette-color2);
+            color: var(--palette-color5);
+
+            border-radius: 5px;
+            border-style: solid;
+            border-color: var(--palette-color1);
+
+            padding: 1rem 5rem;
+            font-size: 2rem;
+        }
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 4rem;
+    background-color: var(--palette-color5);
+    text-align: center;
+}
+
+#experimental-picture {
+    max-width: 100%;
+    max-height: 500px;
 }

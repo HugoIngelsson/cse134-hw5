@@ -25,10 +25,12 @@
             <sliding-container class="no-image in-right out-left">
             <h1>Hello, I'm Hugo!</h1>
             </sliding-container>
-            <picture>
-                <source type="image/avif" srcset="./media/img/avif/me.avif" width="500">
-                <img src="./media/img/png/me.png" alt="A picture of me and my beautiful dog, Stella, lying on my bed." width="500">
-            </picture>
+            <labeled-image tabindex="-1" id="me-img">
+                <picture>
+                    <source type="image/avif" srcset="./media/img/avif/me.avif" width="500">
+                    <img src="./media/img/png/me.png" alt="A picture of me and my beautiful dog, Stella, lying on my bed." width="500" data-width-overwrite>
+                </picture>
+            </labeled-image>
             <section>
                 <sliding-container class="no-image in-left out-left">
                     <h2>Who are you?</h2>
@@ -98,7 +100,7 @@
                     </hgroup>
                     <labeled-image class="tilt-right" tabindex="-1" id="jarvsoo-img">
                         <picture>
-                            <source type="image/avif" srcset="./media/img/avif/jarvsoo.avif" width="500">
+                            <source type="image/avif" srcset="./media/img/avif/jarvsoo.avif">
                             <img src="./media/img/png/jarvsoo.png" alt="A picture looking out at a lake 
                                 with a large tree in the foreground" width="500">
                         </picture><br>
@@ -108,7 +110,7 @@
                 <sliding-container class="in-right out-right">
                     <labeled-image class="tilt-left" tabindex="-1" id="dnd-img">
                         <picture>
-                            <source type="image/avif" srcset="./media/img/avif/dnd_600x600.avif" width="500">
+                            <source type="image/avif" srcset="./media/img/avif/dnd_600x600.avif">
                             <img src="./media/img/png/dnd_600x600.png" alt="A picture of seven people, with me
                                 second furthest right" width="500">
                         </picture><br>
@@ -140,62 +142,38 @@
                 fine, but it might be necessary to turn it on in the future.
             </noscript>
 
-            <!-- Would likely be interactive when JS is added -->
-            <dialog>
-                <span id="dialog-settings">Settings</span>
-
-                <fieldset>
-                    <legend>Visual Features</legend>
-                    <div>
-                        <input type="checkbox" id="dark" name="dark">
-                        <label for="dark">Dark Mode</label>
-                    </div><br>
-                    <div>
-                        <label for="dark">Visual Fidelity</label><br>
-                        <input type="range" id="fidelity" name="fidelity" min="1" max="5" list="fidelity-markers">
-
-                        <datalist id="fidelity-markers">
-                            <option value="1" label="160p"></option>
-                            <option value="2" label="360p"></option>
-                            <option value="3" label="480p"></option>
-                            <option value="4" label="720p"></option>
-                            <option value="5" label="1080p"></option>
-                        </datalist>
-                    </div>
-                </fieldset>
-            </dialog>
-
             <zoomed-pictures>
+                <dialog id="me-dialog">
+                    <picture>
+                        <source type="image/avif" srcset="./media/img/avif/me.avif">
+                        <img src="./media/img/png/me.png" alt="A picture of me and my beautiful dog, Stella, lying on my bed." 
+                        fetchpriority="low">
+                    </picture>
+                    <background-cover></background-cover>
+                </dialog>
                 <dialog id="jarvsoo-dialog">
                     <picture>
-                        <source type="image/avif" srcset="./media/img/avif/jarvsoo.avif" width="500">
+                        <source type="image/avif" srcset="./media/img/avif/jarvsoo.avif">
                         <img src="./media/img/avif/jarvsoo.jpg" alt="A picture looking out at a lake 
-                        with a large tree in the foreground" width="500" fetchpriority="low">
+                        with a large tree in the foreground" fetchpriority="low">
                     </picture>
                     <background-cover></background-cover>
                 </dialog>
                 <dialog id="dnd-dialog">
                     <picture>
-                        <source type="image/avif" srcset="./media/img/avif/dnd.avif" width="500">
+                        <source type="image/avif" srcset="./media/img/avif/dnd.avif">
                         <img src="./media/img/avif/dnd.jpg" alt="A picture of seven people, with me
-                        second furthest right" width="500" fetchpriority="low">
+                        second furthest right" fetchpriority="low">
                     </picture>
                     <background-cover></background-cover>
                 </dialog>
             </zoomed-pictures>
         </main>
         <footer>
-            <small>
+            <p>
                 Thanks for visiting my site! 
                 If you'd like to get in contact, click <a href="./contact.html">here</a>.
-            </small>
+            </p>
         </footer>
-
-        <script>
-            const helloWorld = document.querySelectorAll("hello-world");
-            helloWorld.forEach(() => {
-                console.log("hello world");
-            })
-        </script>
     </body>
 </html>
