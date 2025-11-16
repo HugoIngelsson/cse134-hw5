@@ -179,6 +179,10 @@
     sliding-container {
         opacity: 0;
     }
+
+    sliding-container.no-animation {
+        opacity: 1;
+    }
   
     sliding-container.in-right {
         transform: translateX(0%);
@@ -543,6 +547,30 @@ form {
         border-style: solid;
     }
 
+    output {
+        /* display: block;
+        background-color: var(--palette-color3);
+        padding: 1rem 1rem; */
+    }
+
+    legend {
+        padding: 0 0.3rem;
+    }
+
+    input, textarea {
+        padding: 1px;
+    }
+
+    form-field input {
+        min-width: 50%;
+        max-width: 100%;
+        field-sizing: content; /* not widely available but used when it is */
+    }
+
+    input:user-invalid {
+        border: 2px solid red;
+    }
+
     form-field:has(button[type="submit"]) {
         justify-self: center;
 
@@ -557,6 +585,11 @@ form {
             padding: 1rem 5rem;
             font-size: 2rem;
         }
+    }
+
+    label:has(~ input[required])::after, legend:has(~ input[required])::after {
+        content: "*";
+        color: var(--palette-color2);
     }
 }
 
