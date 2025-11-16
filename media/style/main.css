@@ -9,7 +9,7 @@
     color: var(--palette-color1, #163235);
 }
 
-@scope (header) {
+header {
     display: inline;
 
     @media (width >= 550px) and (not ((orientation: portrait) and (not (hover: hover)))) {
@@ -537,8 +537,19 @@ form {
 
     textarea {
         width: 100%;
-        min-height: 3rem;
-        height: 100%;
+        max-width: 100%;
+        min-height: 6rem;
+        box-sizing: border-box;
+    }
+
+    textarea + span {
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+    }
+
+    textarea + span[data-low] {
+        color: rgb(171, 27, 27);
     }
 
     fieldset {
@@ -547,10 +558,15 @@ form {
         border-style: solid;
     }
 
-    output {
-        /* display: block;
+    output[data-display] {
+        display: inline-block;
         background-color: var(--palette-color3);
-        padding: 1rem 1rem; */
+        padding: 1rem 1rem;
+        
+        min-width: 100%;
+        width: 0;
+
+        box-sizing: border-box;
     }
 
     legend {
@@ -567,11 +583,16 @@ form {
         field-sizing: content; /* not widely available but used when it is */
     }
 
+    input[data-regex-mismatch]:focus {
+        background-color: coral;
+        border: 2px solid red;
+    }
+
     input:user-invalid {
         border: 2px solid red;
     }
 
-    form-field:has(button[type="submit"]) {
+    form-field:has(button[type="button"]) {
         justify-self: center;
 
         button {
