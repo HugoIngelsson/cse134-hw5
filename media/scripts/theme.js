@@ -2,7 +2,7 @@ window.addEventListener('load', init)
 
 let palette = [], theme, font;
 function init() {
-    theme = localStorage.getItem('theme')
+    theme = localStorage.getItem('theme');
     if (!theme) {
         font = 'Ubuntu';
         theme = 'Cyber';
@@ -14,6 +14,8 @@ function init() {
     document.documentElement.style.setProperty(`--nav-items`, 5);
 
     loadStorage();
+    document.body.style.visibility = 'visible'; // only show page once theme is loaded
+
     createSettingsButtons();
     initListeners();
 }

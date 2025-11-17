@@ -233,6 +233,7 @@ header {
 body {
     background-color: var(--palette-color1, #163235);
     overflow-x: hidden;
+    visibility: hidden;
 }
 
 main {
@@ -642,7 +643,7 @@ form {
         border: 2px solid red;
     }
 
-    form-field:has(button[type="button"]) {
+    form-field:has(button) {
         justify-self: center;
 
         button {
@@ -677,4 +678,8 @@ footer {
 #experimental-picture {
     max-width: 100%;
     max-height: 500px;
+}
+
+@view-transition {
+    navigation: auto;
 }
