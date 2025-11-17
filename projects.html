@@ -16,11 +16,6 @@
                     <li><a href="./projects.html" class="active">Projects</a></li>
                     <li><a href="./contact.html">Contact Me</a></li>
                     <li><a href="./experiments.html">Experimental!?</a></li>
-                    <li id="list-nav"><a>Settings</a></li>
-                    <li id="top-nav" style="float: right;"><a>
-                        <img src="./media/img/svg/settings.svg" class="svg-white" onclick="alert('not implemented yet, waiting for JS')"
-                            alt="An icon of a cog wheel, indicating a settings menu">
-                    </a></li>
                 </ul>
             </nav>
         </header>
@@ -302,6 +297,57 @@
                     <background-cover></background-cover>
                 </dialog>
             </zoomed-pictures>
+
+            <dialog id="settings-menu">
+                <form>
+                    <form-field>
+                        <label for="font">Font:</label>
+                        <select name="font" id="font">
+                            <option value="Ubuntu" selected>Ubuntu</option>
+                            <option value="Lucida Sans" selected>Lucida Sans</option>
+                            <option value="Verdana" selected>Verdana</option>
+                            <option value="Times New Roman" selected>Times New Roman</option>
+                            <option value="Arial" selected>Arial</option>
+                        </select>
+                    </form-field>
+                    <form-field>
+                        <label for="theme-name">Theme:</label>
+                        <select name="theme-name" id="theme-name">
+                            <option value="Cyber" selected>Cyber</option>
+                            <option value="Sunshine">Sunshine</option>
+                            <option value="Night">Night</option>
+                            <option value="Monochrome">Monochrome</option>
+                            <option value="Custom">Custom</option>
+                        </select><br>
+                    </form-field>
+                    <hr>
+                    <form-field>
+                        <label for="color1">Color 1:</label>
+                        <input type="color" name="color1" id="color1" value="#163235"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color2">Color 2:</label>
+                        <input type="color" name="color2" id="color2" value="#106967"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color3">Color 3:</label>
+                        <input type="color" name="color3" id="color3" value="#4fbc9c"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color4">Color 4:</label>
+                        <input type="color" name="color4" id="color4" value="#32bfda"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color5">Color 5:</label>
+                        <input type="color" name="color5" id="color5" value="#efca7c"><br>
+                    </form-field>
+                </form>
+                <background-cover></background-cover>
+            </dialog>
         </main>
         <footer>
             <p>
@@ -309,5 +355,7 @@
                 If you'd like to get in contact, click <a href="./contact.html">here</a>.
             </p>
         </footer>
+
+        <script src="./media/scripts/theme.js"></script>
     </body>
 </html>

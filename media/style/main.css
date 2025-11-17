@@ -5,7 +5,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
     color: var(--palette-color1, #163235);
 }
 
@@ -440,6 +439,53 @@ dialog {
 
 :root:has(labeled-image#dnd-img:focus) dialog#dnd-dialog {
     display: block;
+}
+
+dialog#settings-menu[open] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+
+    top: 50%;
+    left: 50%;
+
+    form {
+        background-color: var(--palette-color4);
+        z-index: 9;
+        position: fixed;
+        transform: translate(-50%, -50%);
+
+        display: block;
+        padding: 2rem;
+        border-radius: 5px;
+
+        hr {
+            margin: 0.5rem;
+            border: 1px solid var(--palette-color2);
+            height: 0px;
+        }
+
+        select {
+            background-color: var(--palette-color5);
+        }
+
+        form-field {
+            margin: 0.1rem auto;
+            display: flex;
+            justify-content: center;
+
+            label {
+                width: fit-content;
+                margin: auto 0.2rem;
+            }
+
+            input[type="color"] {
+                min-width: 0;
+                width: 50%;
+            }
+        }
+    }
 }
 
 @media (width >= 700px) and (hover: hover) {
