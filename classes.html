@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="A page to confirm someone has submitted the contact form.">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./media/favicon/favicon-32x32.png">
+        <title>Hugo Ingelsson's Portfolio Site - Form Submit</title>
+        
+        <!-- <style>
+            @view-transition {
+                navigation: auto;
+            }
+        </style> -->
+        <link rel="stylesheet" href="./media/style/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./contact.html">Contact Me</a></li>
+                    <li><a href="./experiments.html">Experimental!?</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <sliding-container class="no-image no-animation">
+                <h1>Class List</h1>
+                <p>I've taken a bunch of classes here at UCSD! Click the buttons below to find out which ones I've taken.</p>
+            </sliding-container>
+
+            <sliding-container class="no-image no-animation">
+                <form-field>
+                    <button type="button" id="load-local">Load Local</button>
+                    <button type="button" id="load-remote">Load Remote</button>
+                </form-field>
+            </sliding-container>
+
+            <sliding-container class="no-image no-animation">
+                <section id="classes">
+                    <class-card>
+                        <h2>CSE 101</h2>
+                        <h3>Advanced Algorithms</h3>
+                        <picture>
+                            <img src="./media/img/png/catan_600x455.png">
+                        </picture>
+                        <hgroup>
+                            <p><b>Grade Received:</b> A+</p>
+                            <p><b>Taken:</b> Winter 2025</p>
+                            <p>
+                                This is a fundamental class for any CS student to take, teaching
+                                more advanced algorithmic concepts like graph algorithms and dynamic programming.
+                            </p>
+                        </hgroup>
+                    </class-card>
+
+                    <class-card>
+                        <h2>CSE 101</h2>
+                        <h3>Advanced Algorithms</h3>
+                        <picture>
+                            <img src="./media/img/png/catan_600x455.png">
+                        </picture>
+                        <p><b>Grade Received:</b> A+</p>
+                        <p></p>
+                    </class-card>
+
+                    <class-card>
+                        <h2>CSE 101</h2>
+                        <h3>Advanced Algorithms</h3>
+                        <picture>
+                            <img src="./media/img/png/catan_600x455.png">
+                        </picture>
+                        <p><b>Grade Received:</b> A+</p>
+                        <p></p>
+                    </class-card>
+
+                    <class-card>
+                        <h2>CSE 101</h2>
+                        <h3>Advanced Algorithms</h3>
+                        <picture>
+                            <img src="./media/img/png/catan_600x455.png">
+                        </picture>
+                        <p><b>Grade Received:</b> A+</p>
+                        <p></p>
+                    </class-card>
+
+                    <class-card>
+                        <h2>CSE 101</h2>
+                        <h3>Advanced Algorithms</h3>
+                        <picture>
+                            <img src="./media/img/png/catan_600x455.png">
+                        </picture>
+                        <hgroup>
+                            <p><b>Grade Received:</b> A+</p>
+                            <p><b>Taken:</b> Winter 2025</p>
+                            <p>
+                                This is a fundamental class for any CS student to take, teaching
+                                more advanced algorithmic concepts like graph algorithms and dynamic programming.
+                            </p>
+                        </hgroup>
+                    </class-card>
+
+                    <style>
+                        class-card {
+                            margin: 1rem 0.2rem;
+                            padding: 0.3rem 0.8rem;
+                            background-color: var(--palette-color3);
+                            display: block;
+                            
+                            width: 40%;
+                            min-width: 200px;
+                            max-width: 300px;
+
+                            border-radius: 5px;
+
+                            img {
+                                width: 100%;
+                            }
+
+                            h2 {
+                                font-size: 1.8em;
+                                margin: 0.3rem;
+                            }
+
+                            h3 {
+                                font-size: 1em;
+                                margin: 0.3rem;
+                            }
+
+                            p {
+                                margin: 0.3rem 0;
+                                padding: 0 0.1rem;
+                            }
+
+                            b {
+                                font-style: oblique;
+                            }
+
+                            hgroup {
+                                display: block;
+                                margin: 0;
+                                text-align: left;
+                            }
+                        }
+                    </style>
+                </section>
+            </sliding-container>
+
+            <dialog id="settings-menu">
+                <form>
+                    <form-field>
+                        <label for="font">Font:</label>
+                        <select name="font" id="font">
+                            <option value="Ubuntu" selected>Ubuntu</option>
+                            <option value="Lucida Sans" selected>Lucida Sans</option>
+                            <option value="Verdana" selected>Verdana</option>
+                            <option value="Times New Roman" selected>Times New Roman</option>
+                            <option value="Arial" selected>Arial</option>
+                        </select>
+                    </form-field>
+                    <form-field>
+                        <label for="theme-name">Theme:</label>
+                        <select name="theme-name" id="theme-name">
+                            <option value="Cyber" selected>Cyber</option>
+                            <option value="Sunshine">Sunshine</option>
+                            <option value="Night">Night</option>
+                            <option value="Monochrome">Monochrome</option>
+                            <option value="Custom">Custom</option>
+                        </select><br>
+                    </form-field>
+                    <hr>
+                    <form-field>
+                        <label for="color1">Color 1:</label>
+                        <input type="color" name="color1" id="color1" value="#163235"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color2">Color 2:</label>
+                        <input type="color" name="color2" id="color2" value="#106967"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color3">Color 3:</label>
+                        <input type="color" name="color3" id="color3" value="#4fbc9c"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color4">Color 4:</label>
+                        <input type="color" name="color4" id="color4" value="#32bfda"><br>
+                    </form-field>
+
+                    <form-field>
+                        <label for="color5">Color 5:</label>
+                        <input type="color" name="color5" id="color5" value="#efca7c"><br>
+                    </form-field>
+                </form>
+                <background-cover></background-cover>
+            </dialog>
+        </main>
+
+        <noscript>
+            <style>
+                body { 
+                    visibility: visible;
+                }
+            </style>
+        </noscript>
+        <script src="./media/scripts/theme.js"></script>
+    </body>
+</html>

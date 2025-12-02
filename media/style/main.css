@@ -643,25 +643,27 @@ form {
         border: 2px solid red;
     }
 
-    form-field:has(button) {
-        justify-self: center;
-
-        button {
-            background-color: var(--palette-color2, #106967);
-            color: var(--palette-color5, #efca7c);
-
-            border-radius: 5px;
-            border-style: solid;
-            border-color: var(--palette-color1, #163235);
-
-            padding: 1rem 5rem;
-            font-size: 2rem;
-        }
-    }
-
     label:has(~ input[required])::after, legend:has(~ input[required])::after {
         content: "*";
         color: var(--palette-color2);
+    }
+}
+
+form-field:has(button) {
+    margin: 1rem 0;
+    justify-self: center;
+
+    button {
+        background-color: var(--palette-color2, #106967);
+        color: var(--palette-color5, #efca7c);
+
+        border-radius: 5px;
+        border-style: solid;
+        border-color: var(--palette-color1, #163235);
+
+        margin: 1rem 1rem;
+        padding: 1rem 5rem;
+        font-size: 2rem;
     }
 }
 
@@ -723,4 +725,10 @@ footer {
 
 ::view-transition-new(root) {
     animation: 0.4s ease-in-out both move-in 0.2s;
+}
+
+#classes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
