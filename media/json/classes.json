@@ -1,0 +1,62 @@
+[
+    {
+        "id": "CSE 101",
+        "name": "Algorithms",
+        "link": "https://catalog.ucsd.edu/courses/CSE.html#cse101",
+        "image_url": "./media/img/class_display/CSE/cse101.png",
+        "image_alt": "A diagram showing the algorithm for Euclid's algorithm.",
+        "grade": "A+",
+        "quarter": "Winter 2025",
+        "description": "This is a fundamental class for any CS student to take, teaching more advanced algorithmic concepts like graph algorithms and dynamic programming."
+    },
+    {
+        "id": "CSE 100",
+        "name": "Data Structures",
+        "link": "https://catalog.ucsd.edu/courses/CSE.html#cse100",
+        "image_url": "./media/img/class_display/CSE/cse100.jpg",
+        "image_alt": "A diagram of different types of data structures.",
+        "grade": "A+",
+        "quarter": "Winter 2025",
+        "description": "This class taught us more advanced data structures, like red-black trees and different kinds of efficient automata."
+    },
+    {
+        "id": "CSE 120",
+        "name": "Operating Systems",
+        "link": "https://catalog.ucsd.edu/courses/CSE.html#cse120",
+        "image_url": "./media/img/class_display/CSE/cse120.jpg",
+        "image_alt": "A collage of popular operating systems.",
+        "grade": "A+",
+        "quarter": "Spring 2025",
+        "description": "This class was all about operating systems, going into things like synchronization, virtual memory, and multiprocessing. We also developed most of an OS for this class."
+    },
+    {
+        "id": "CSE 110",
+        "name": "Software Engineering",
+        "link": "https://catalog.ucsd.edu/courses/CSE.html#cse110",
+        "image_url": "./media/img/class_display/CSE/cse110.jpg",
+        "image_alt": "A diagram showing the Agile development cycle.",
+        "grade": "A",
+        "quarter": "Spring 2025",
+        "description": "This class went through the process of software engineering, teaching us different SWE concepts like Agile, all while we worked in groups of 10+ people developing a project."
+    },
+    {
+        "id": "CSE 134B",
+        "name": "Web Development",
+        "link": "https://catalog.ucsd.edu/courses/CSE.html#cse134b",
+        "image_url": "./media/img/class_display/CSE/cse134b.webp",
+        "image_alt": "A diagram showing how client HTTP Requests get handled by servers, which then respond with an HTTP Response packet.",
+        "grade": "TBD",
+        "quarter": "Fall 2025",
+        "description": "Hello whoever's grading this! In this class, we learned the fundamentals of web development and developed our own portfolio site."
+    },
+    {
+        "id": "Math 140ABC",
+        "name": "Real Analysis",
+        "link": "https://catalog.ucsd.edu/courses/MATH.html#cse140a",
+        "image_url": "./media/img/class_display/MATH/math140abc.jpg",
+        "image_alt": "An image of a graph and an integral, showing the basics of Riemann integration.",
+        "grade": "A+/A+/A+",
+        "quarter": "Sophomore Year",
+        "description": "This class was about real analysis, and over the three courses in the series it spanned a massive amount of knowledge (going through effectively all of 'Little Rudin', as the textbook is affectionately known)"
+    }
+]
