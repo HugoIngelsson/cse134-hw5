@@ -2,7 +2,6 @@ import './class-card.js'
 
 const url = "https://api.jsonbin.io/v3/b/692fa890d0ea881f400f17de";
 let records = {}
-console.log("test");
 window.addEventListener('DOMContentLoaded', () => {
     init();
 });

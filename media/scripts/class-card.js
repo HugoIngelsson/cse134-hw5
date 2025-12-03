@@ -13,6 +13,15 @@ class ClassCard extends HTMLElement {
         const quarter = this.getAttribute('quarter') !== "undefined" ? this.getAttribute('quarter') : 'Sometime 20XX';
         const description = this.getAttribute('description') !== "undefined" ? this.getAttribute('description') : 'Description Empty';
 
+        const editable = this.hasAttribute('editable') ? true : false;
+        let editableButtons = ""
+        if (editable) {
+            editableButtons = `
+                <button class="edit"><img src="./media/img/svg/edit-svgrepo-com.svg" /></button>
+                <button class="delete"><img src="./media/img/svg/big-trash-can-svgrepo-com.svg" /></button>
+            `
+        }
+
         this.innerHTML = '';
         this.setCSS();
         this.innerHTML += `
@@ -27,6 +36,7 @@ class ClassCard extends HTMLElement {
                 <p><b>Taken: </b>${quarter}</p>
                 <p>${description}</p>
             </hgroup>
+            ${editableButtons}
             </div>
         `;
     }
@@ -56,6 +66,7 @@ class ClassCard extends HTMLElement {
         this.style.padding = "0.3rem 0.8rem";
         this.style.backgroundColor = "var(--palette-color3)";
         this.style.display = "block";
+        this.style.position = "relative";
 
         this.style.width = "40%";
         this.style.minWidth = "200px";
@@ -99,10 +110,64 @@ class ClassCard extends HTMLElement {
                 margin: 0;
                 text-align: left;
             }
+
+            .edit, .delete {
+                cursor: grab;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+
+                position: absolute;
+                display: flex;
+                height: 50px;
+                width: 50px;
+                border-radius: 25px;
+                border-width: 3px;
+                border-style: solid;
+
+                img {
+                    height: 60%;
+                    margin: auto;
+                }
+            }
+
+            .edit {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .delete {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            .edit:hover {
+                background-color: green;
+            }
+
+            .delete:hover {
+                background-color: red;
+            }
+        }
+
+        div:hover .edit, div:hover .delete {
+            opacity: 1;
         }
         `;
 
         this.appendChild(style);
+    }
+
+    toList() {
+        return {
+            "id": this.getAttribute('id'),
+            "name": this.getAttribute('name'),
+            "link": this.getAttribute('link'),
+            "image_url": this.getAttribute('image-url'),
+            "image_alt": this.getAttribute('image-alt'),
+            "grade": this.getAttribute('grade'),
+            "quarter": this.getAttribute('quarter'),
+            "description": this.getAttribute('description')
+        };
     }
 }
 
