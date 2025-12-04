@@ -181,10 +181,13 @@ header {
 
     sliding-container {
         opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in, transform 0.2s ease-in;
     }
 
     sliding-container.no-animation {
         opacity: 1;
+        visibility: visible;
     }
   
     sliding-container.in-right {
@@ -195,11 +198,13 @@ header {
         transform: translateX(-100%);
     }
 
-    sliding-container.in-up {
-        transform: translateY(100%) translateX(-50%);
+    sliding-container.visible {
+        opacity: 1;
+        transform: translateY(0%) translateX(-50%);
+        visibility: visible;
     }
 
-    sliding-container.in-right.out-right {
+    /* sliding-container.in-right.out-right {
         animation: slide-in-right 1s ease-in forwards, slide-out-right 1s ease-out forwards;
         animation-timeline: view(), view();
         animation-range: cover 10% cover 15%, cover 85% cover 90%;
@@ -227,7 +232,7 @@ header {
         animation: slide-in-up 1s ease-in forwards, slide-out-up 1s ease-out forwards;
         animation-timeline: view(), view();
         animation-range: cover 10% cover 25%, cover 85% cover 100%;
-    }
+    } */
 }
 
 body {
