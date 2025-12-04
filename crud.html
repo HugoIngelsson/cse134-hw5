@@ -30,8 +30,7 @@
                 <h1>Edit Local Storage</h1>
                 <p>
                     Use the interface below to perform CRUD actions on local storage. 
-                    You can create new items by pressing the big plus icon at the end of the list,
-                    edit or delete items by hovering over them, or delete the entire list with the 
+                    You can create new items, edit or delete items by hovering over them, or delete the entire list with the 
                     button at the top.
                 </p>
             </sliding-container>
@@ -40,6 +39,7 @@
                 <form-field>
                     <button type="button" id="load-json">Reset Local Storage</button>
                     <button type="button" id="clear-storage">Clear Local Storage</button>
+                    <button type="button" id="add-new">Create New Card</button>
                 </form-field>
             </sliding-container>
 
@@ -47,6 +47,50 @@
                 <section id="classes">
                 </section>
             </sliding-container>
+
+            <dialog id="card-menu">
+                <form>
+                    <form-field>
+                        <label for="class-id">Class ID:</label>
+                        <input type="text" name="class-id" id="class-id">
+                    </form-field>
+                    <form-field>
+                        <label for="class-name">Class Name:</label>
+                        <input type="text" name="class-name" id="class-name">
+                    </form-field>
+                    <form-field>
+                        <label for="class-link">Class Link:</label>
+                        <input type="text" name="class-link" id="class-link">
+                    </form-field>
+                    <hr>
+
+                    <form-field>
+                        <label for="class-img-url">Image URL:</label>
+                        <input type="text" name="class-img-url" id="class-img-url">
+                    </form-field>
+                    <form-field>
+                        <label for="class-img-alt">Image Description:</label>
+                        <textarea name="class-img-alt" id="class-img-alt"></textarea>
+                    </form-field>
+                    <hr>
+
+                    <form-field>
+                        <label for="class-grade">Grade Received:</label>
+                        <input type="text" name="class-grade" id="class-grade">
+                    </form-field>
+                    <form-field>
+                        <label for="class-quarter">Quarter Taken:</label>
+                        <input type="text" name="class-quarter" id="class-quarter">
+                    </form-field>
+                    <form-field>
+                        <label for="class-description">Description:</label>
+                        <textarea name="class-description" id="class-description"></textarea>
+                    </form-field>
+
+                    <button type="button" id="class-submit">Create</button>
+                </form>
+                <background-cover></background-cover>
+            </dialog>
 
             <dialog id="settings-menu">
                 <form>

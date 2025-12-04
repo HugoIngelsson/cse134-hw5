@@ -1,11 +1,11 @@
 import './class-card.js'
 
-let records = {}
+let records = {}, dialog = undefined, curTarget
 window.addEventListener('DOMContentLoaded', () => {
     init();
 });
 
-async function init() {
+function init() {
     console.log("DOM Content loaded");
 
     document.querySelector('#load-json').addEventListener('click', loadFromJSON);
@@ -15,7 +15,72 @@ async function init() {
     });
     document.getElementById("classes").addEventListener('click', galleryClick);
 
-    parseJSON(JSON.parse(localStorage.getItem('classes')));
+    if (localStorage.getItem('classes'))
+        parseJSON(JSON.parse(localStorage.getItem('classes')));
+
+    const addNew = document.querySelector('#add-new');
+    dialog = document.querySelector('#card-menu');
+    if (dialog) {
+        addNew.addEventListener('click', () => {
+            curTarget = null;
+            openCardMenu({}, 'Create');
+        })
+
+        const backdrop = document.querySelector('#card-menu background-cover');
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog || e.target === backdrop) {
+                dialog.close();
+            }
+        });
+
+        dialog.querySelector('#class-submit').addEventListener('click', submitCardMenu);
+    }
+}
+
+function openCardMenu(data, submitName) {
+    dialog.showModal();
+
+    dialog.querySelector('#class-id').value = data['id'] || '';
+    dialog.querySelector('#class-name').value = data['name'] || '';
+    dialog.querySelector('#class-link').value = data['link'] || '';
+    dialog.querySelector('#class-img-url').value = data['image_url'] || '';
+    dialog.querySelector('#class-img-alt').value = data['image_alt'] || '';
+    dialog.querySelector('#class-grade').value = data['grade'] || '';
+    dialog.querySelector('#class-quarter').value = data['quarter'] || '';
+    dialog.querySelector('#class-description').value = data['description'] || '';
+
+    dialog.querySelector('#class-submit').innerHTML = submitName || '';
+}
+
+function submitCardMenu() {
+    if (!dialog) return;
+
+    const data = new FormData(dialog.querySelector("form"));
+    const dataDict = {
+        'id': data.get('class-id'),
+        'name': data.get('class-name'),
+        'link': data.get('class-link'),
+        'image_url': data.get('class-img-url'),
+        'image_alt': data.get('class-img-alt'),
+        'grade': data.get('class-grade'),
+        'quarter': data.get('class-quarter'),
+        'description': data.get('class-description'),
+    }
+
+    if (curTarget === null) {
+        const item = document.createElement("class-card");
+
+        setCardAttributes(item, dataDict);
+        item.setAttribute("editable", '');
+
+        document.getElementById("classes").appendChild(item);
+    } else {
+        setCardAttributes(curTarget, dataDict);
+        curTarget.connectedCallback();
+    }
+
+    setLocalStorage();
+    dialog.close();
 }
 
 async function loadFromJSON() {
@@ -33,25 +98,28 @@ async function loadFromJSON() {
     }
 }
 
-async function parseJSON(jsonData) {
+function setCardAttributes(item, classData) {
+    item.setAttribute("id", `${classData.id}`);
+    item.setAttribute("name", `${classData.name}`);
+    item.setAttribute("link", `${classData.link}`);
+    item.setAttribute("image-url", `${classData.image_url}`);
+    item.setAttribute("image-alt", `${classData.image_alt}`);
+    item.setAttribute("grade", `${classData.grade}`);
+    item.setAttribute("quarter", `${classData.quarter}`);
+    item.setAttribute("description", `${classData.description}`);
+}
+
+function parseJSON(jsonData) {
     records = jsonData;
     document.getElementById('classes').replaceChildren();
     Object.keys(records).forEach(key => {
         const classData = records[key];
+        const item = document.createElement("class-card");
 
-        window.galleryItem = document.createElement("class-card");
+        setCardAttributes(item, classData);
+        item.setAttribute("editable", '');
 
-        window.galleryItem.setAttribute("id", `${classData.id}`);
-        window.galleryItem.setAttribute("name", `${classData.name}`);
-        window.galleryItem.setAttribute("link", `${classData.link}`);
-        window.galleryItem.setAttribute("image-url", `${classData.image_url}`);
-        window.galleryItem.setAttribute("image-alt", `${classData.image_alt}`);
-        window.galleryItem.setAttribute("grade", `${classData.grade}`);
-        window.galleryItem.setAttribute("quarter", `${classData.quarter}`);
-        window.galleryItem.setAttribute("description", `${classData.description}`);
-        window.galleryItem.setAttribute("editable", '');
-
-        document.getElementById("classes").appendChild(window.galleryItem);
+        document.getElementById("classes").appendChild(item);
     });
 }
 
@@ -63,54 +131,12 @@ function galleryClick(e) {
         const del = e.target.closest('.delete');
 
         if (edit) {
-            console.log('edit action');
+            curTarget = target;
+            openCardMenu(target.toList(), 'Edit');
         } else if (del) {
             document.getElementById("classes").removeChild(target);
             setLocalStorage();
         }
-
-        // const deetsP = target.querySelector('.deets');
-
-        // // make sure we don't overwrite the HTML if a form is already present. Note i haven't implemented anything to "cancel" the form.
-        // if (target.querySelector('form')) return;
-
-        // // Note the functionality below only allows for changing the details of each vehicle. You need to do a bit more than this.
-        // const oldText = deetsP.textContent;
-        // console.log(oldText);
-
-        // deetsP.outerHTML = `
-        //     <form class="edit-deets-form">
-        //         <textarea rows='5'>${oldText}</textarea>
-        //         <button type="submit">Save</button>
-        //     </form>
-        // `;
-        // const form = target.querySelector('.edit-deets-form');
-        // form.addEventListener('submit', async (e) => {
-
-        //     // don't redirect to whatever the form would normally redirect to.
-        //     e.preventDefault();
-
-        //     const newDeets = form.querySelector('textarea').value;
-        //     const myKey = `${target.querySelector('.model').innerText}-${target.querySelector('.year').innerText}`.toLowerCase().replaceAll(' ', '-');
-        //     records[myKey]['deets'] = newDeets;
-        //     // If you are doing a local storage apporach for CRUD this would be all you need.
-        //     // localStorage.setItem("my-rides", JSON.stringify(records));
-
-        //     // Yes, in this case you do need to submit your entire records array as the value.
-
-        //     // If you are doing a remote storage approach the below code will work for JSONBIN.
-        //     // But note that pasting your API key directly could lead to it being exposed in your repo.
-        //     // Now client-side code cannot inject env vars for you (typically a backend/build system process) so trying to hide the API key can end up being a complicated process depending on your choice of framework or deployment.
-        //     // Never mind that anyone can then access the source code on your deployed site and pull in the key directly from there anyway.
-        //     // Which is to say I can only advise CRUD on remote at this point if you do not care about your JSONBIN API Key.
-        //     await fetch(url, {
-        //         method: 'PUT', headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-Master-Key': '$$2a$10$kVe4YMjasUMh33PVFF.EsOcSvtZQVZSu9hIJA9uOFIGjLYbxIS3R2',
-        //         }, body: JSON.stringify(records)
-        //     });
-        //     form.outerHTML = `<p class="deets">${newDeets}</p>`;
-        // });
     }
 }
 

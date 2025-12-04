@@ -26,7 +26,7 @@ class ClassCard extends HTMLElement {
         this.setCSS();
         this.innerHTML += `
             <div class="cont">
-            <a href="${link}" target="_blank">
+            <a ${link ? `href="${link}"` : ''} target="_blank">
                 <h2>${id}</h2>
                 <h3>${name}</h3>
             </a>
@@ -115,6 +115,7 @@ class ClassCard extends HTMLElement {
                 cursor: grab;
                 opacity: 0;
                 transition: opacity 0.2s ease-in-out;
+                background-color: var(--palette-color5);
 
                 position: absolute;
                 display: flex;
@@ -141,11 +142,11 @@ class ClassCard extends HTMLElement {
             }
 
             .edit:hover {
-                background-color: green;
+                background-color: var(--palette-color4);
             }
 
             .delete:hover {
-                background-color: red;
+                background-color: var(--palette-color4);
             }
         }
 

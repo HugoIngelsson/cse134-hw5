@@ -446,7 +446,7 @@ dialog {
     display: block;
 }
 
-dialog#settings-menu[open] {
+dialog#settings-menu[open], dialog#card-menu[open] {
     position: fixed;
     top: 0;
     left: 0;
@@ -465,6 +465,8 @@ dialog#settings-menu[open] {
         padding: 2rem;
         border-radius: 5px;
 
+        text-align: right;
+
         hr {
             margin: 0.5rem;
             border: 1px solid var(--palette-color2);
@@ -477,19 +479,33 @@ dialog#settings-menu[open] {
 
         form-field {
             margin: 0.1rem auto;
-            display: flex;
             justify-content: center;
+
+            display: grid;
 
             label {
                 width: fit-content;
                 margin: auto 0.2rem;
+                justify-self: right;
             }
 
-            input[type="color"] {
+            input[type="color"], select {
                 min-width: 0;
                 width: 50%;
             }
         }
+    }
+}
+
+dialog#settings-menu[open] form-field {
+    grid-template-columns: 50% 50% 0;
+}
+
+dialog#card-menu[open] form-field {
+    grid-template-columns: 30% 70% 0;
+
+    textarea {
+        min-height: 3rem;
     }
 }
 
@@ -652,19 +668,20 @@ form {
 form-field:has(button) {
     margin: 1rem 0;
     justify-self: center;
+}
 
-    button {
-        background-color: var(--palette-color2, #106967);
-        color: var(--palette-color5, #efca7c);
+button[type="button"] {
+    display: block;
+    background-color: var(--palette-color2, #106967);
+    color: var(--palette-color5, #efca7c);
 
-        border-radius: 5px;
-        border-style: solid;
-        border-color: var(--palette-color1, #163235);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: var(--palette-color1, #163235);
 
-        margin: 1rem 1rem;
-        padding: 1rem 5rem;
-        font-size: 2rem;
-    }
+    margin: 1rem auto;
+    padding: 1rem 5rem;
+    font-size: 2rem;
 }
 
 footer {
@@ -685,8 +702,6 @@ footer {
 @view-transition {
     navigation: auto;
 }
-
-/* Customize the default animation behavior */
 
 ::view-transition-group(root) {
     animation-duration: 0.5s;
@@ -716,8 +731,6 @@ footer {
     }
 }
 
-/* Apply the custom animation to the old and new page states */
-
 ::view-transition-old(root) {
     animation: 0.4s ease-in-out both move-out;
 
@@ -731,4 +744,8 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+button:hover {
+    background-color: var(--palette-color3);
 }
